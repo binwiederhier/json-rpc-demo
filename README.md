@@ -1,9 +1,10 @@
 JSON-RPC Example Project
 ========================
 
-To test, start a webserver
---------------------------
+To test, init composer and start a webserver
+--------------------------------------------
 ```
+composer install
 php -S localhost:8888
 ```
 
