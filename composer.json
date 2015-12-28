@@ -1,0 +1,14 @@
+{
+    "name": "binwiederhier/json-rpc-demo",
+    "require": {
+        "datto/json-rpc-auth": "~4.0",
+        "datto/json-rpc-simple": "~4.0",
+        "datto/json-rpc-log": "~4.0",
+        "datto/json-rpc-validator": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+           "Demo\\": "src/"
+        }
+    }
+}
