@@ -1,14 +1,14 @@
 JSON-RPC Example Project
-------------------------
+========================
 
 To test, start a webserver
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 ```
 php -S localhost:8888
 ```
 
 Example 1: Using `JsonRpc\Simple` mapper
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 HTTP-only endpoint without authentication, logging or validation.
 
 ```
@@ -22,14 +22,14 @@ curl -d '{"jsonrpc":"2.0","id":1,"method":"devices/listAll"}' http://localhost:8
 ```
 
 Example 2: Adding parameter validation with `JsonRpc\Validator`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------------
 ```
 curl -d '{"jsonrpc":"2.0","id":1,"method":"devices/listAll","params":{"sortBy":"INVALID"}}' http://localhost:8888/example2/api.php; echo
 {"jsonrpc":"2.0","id":1,"error":{"code":-32602,"message":"Invalid params"}}
 ```
 
 Example 3: Adding HTTP Basic authentication with `JsonRpc\Auth`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------------
 Trying to access API without authentication:
 ```
 curl -d '{"jsonrpc":"2.0","id":1,"method":"devices/listAll"}' http://localhost:8888/example3/api.php; echo
@@ -49,7 +49,7 @@ curl -u user:pass -d '{"jsonrpc":"2.0","id":1,"method":"devices/listAll"}' http:
 ```
 
 Example 4: Adding logging  with `JsonRpc\Logged`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------
 Requests and responses are logged to syslog (usually at `/var/log/syslog`):
 ```
 # Do a request first
@@ -63,7 +63,7 @@ Dec 28 22:54:19 platop api[13012]: demo.api.INFO: Sending reply: {"jsonrpc":"2.0
 ```
 
 Example 5: Adding CLI-support with 'root'-only access
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------
 Trying to access the API via the CLI as non-root user:
 ```
 echo '{"jsonrpc":"2.0","id":1,"method":"devices/listAll"}' | php web/example5/api.php; echo
